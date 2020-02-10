@@ -60,7 +60,6 @@ export default class MenuExampleSecondary extends Component {
           onClick={this.handleItemClick}
         />
 
-
         </Menu.Menu>
       </Menu>
     )

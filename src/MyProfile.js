@@ -1,5 +1,7 @@
 import React from 'react'
 import { Image, Header, Divider } from 'semantic-ui-react'
+import PetsContainer from './PetsContainer'
+import PetCard from './PetCard'
 
 const ProfilePicture = () => (
   <>
@@ -17,6 +19,9 @@ const ProfilePicture = () => (
       style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
       <h4>My Pets</h4>
     </Divider>
+
+    <PetsContainer />
+    <PetCard/>
   </>
 )
 

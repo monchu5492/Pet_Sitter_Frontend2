@@ -7,7 +7,12 @@ import NavBar from './NavBar'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
+
 // import { getQueriesForElement } from '@testing-library/react';
+
+import { getQueriesForElement } from '@testing-library/react';
+import PetCard from './PetCard'
+
 //state: isUserLogedIn: null
 
 const ownersURL= "http://localhost:3000/owners"
@@ -106,7 +111,8 @@ handleOnLogIn = () => {
         exact
         render={() => <MyProfile />}
         />
-
+        
+        {/* <PetCard/> */}
 
       </Router>
     </div>
