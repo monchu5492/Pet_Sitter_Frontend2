@@ -27,6 +27,12 @@ export default class MenuExampleSecondary extends Component {
           onClick={this.handleItemClick}
         />
         <Menu.Item
+          as={NavLink} to="/profile"
+          name='my profile'
+          active={activeItem === 'profile'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
           as={NavLink} to="/pets"
           name='My Pets'
           active={activeItem === 'mypets'}
@@ -46,12 +52,7 @@ export default class MenuExampleSecondary extends Component {
           active={activeItem === 'sign up'}
           onClick={this.handleItemClick}
         />
-        <Menu.Item
-          as={NavLink} to="/profile"
-          name='my profile'
-          active={activeItem === 'profile'}
-          onClick={this.handleItemClick}
-        />
+        
         <Menu.Item
           as={NavLink} to="/logout"
           name='logout'

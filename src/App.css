@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+form.ui.form {
+  max-width: 50%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+h3.form-title {
+  text-align: center;
+  margin-top: 10%;
+}
+
+/* .profile-top-section {
+  margin:auto;
+} */
+
+.profilepic {
+  text-align: center;
+}
+.ui.medium.image {
+  margin:auto;
+}
+
+.profilename {
+  text-align: center;
+}
