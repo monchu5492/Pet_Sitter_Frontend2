@@ -98,22 +98,6 @@ class DesktopContainer extends Component {
               secondary={!fixed}
               size='large'
             >
-              <Container>
-                <Menu.Item as='a' active>
-                  Home
-                </Menu.Item>
-                <Menu.Item as='a'>Services</Menu.Item>
-                <Menu.Item as='a'>About</Menu.Item>
-                <Menu.Item as='a'>FAQ</Menu.Item>
-                <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed} onClick={this.props.handleOnLogIn}>
-                    Log in
-                  </Button>
-                  <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button>
-                </Menu.Item>
-              </Container>
             </Menu>
             <HomepageHeading />
           </Segment>
@@ -202,7 +186,7 @@ MobileContainer.propTypes = {
 
 const ResponsiveContainer = ({ children }) => (
   <div>
-    <DesktopContainer handleOnLogIn={this.props.handleOnLogIn}>{children}</DesktopContainer>
+    <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>
 )

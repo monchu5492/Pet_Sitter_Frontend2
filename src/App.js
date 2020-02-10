@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 // import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
-import ResponsiveContainer from './HomepageLayout'
-
+import NavBar from './NavBar'
+import LoginForm from './LoginForm'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 //state: isUserLogedIn: null
 
 const ownersURL= "http://localhost:3000/owners"
@@ -21,11 +22,23 @@ handleOnLogIn = () => {
   render() {
   return (
     <div>
-      <HomepageLayout />
-    </div>,
-    <>
-    <ResponsiveContainer handleOnLogIn={this.handleOnLogIn} /> 
-    </>
+      <Router>
+        <NavBar />
+
+        <Route
+        path="/"
+        exact
+        render={() => <HomepageLayout />}
+        />
+
+        <Route
+          path="/login"
+          exact
+          render={() => <LoginForm />}
+        />
+
+      </Router>
+    </div>
   );
 }
 }
