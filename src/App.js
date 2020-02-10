@@ -9,6 +9,7 @@ import MyProfile from './MyProfile'
 import LoginSignupContainer from './LoginSignupContainer'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { getQueriesForElement } from '@testing-library/react';
+import PetCard from './PetCard'
 //state: isUserLogedIn: null
 
 const ownersURL= "http://localhost:3000/owners"
@@ -70,7 +71,8 @@ handleOnLogIn = () => {
         exact
         render={() => <MyProfile />}
         />
-
+        
+        {/* <PetCard/> */}
 
       </Router>
     </div>
