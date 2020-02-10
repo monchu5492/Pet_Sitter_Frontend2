@@ -69,10 +69,11 @@ HomepageHeading.propTypes = {
  */
 class DesktopContainer extends Component {
   state = {}
-
+  
+  
   hideFixedMenu = () => this.setState({ fixed: false })
   showFixedMenu = () => this.setState({ fixed: true })
-
+  
   render() {
     const { children } = this.props
     const { fixed } = this.state
@@ -105,7 +106,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as='a'>About</Menu.Item>
                 <Menu.Item as='a'>FAQ</Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed}>
+                  <Button as='a' inverted={!fixed} onClick={this.props.handleOnLogIn}>
                     Log in
                   </Button>
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
@@ -201,7 +202,7 @@ MobileContainer.propTypes = {
 
 const ResponsiveContainer = ({ children }) => (
   <div>
-    <DesktopContainer>{children}</DesktopContainer>
+    <DesktopContainer handleOnLogIn={this.props.handleOnLogIn}>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>
 )

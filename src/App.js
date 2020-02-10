@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 // import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
-
+import ResponsiveContainer from './HomepageLayout'
 
 //state: isUserLogedIn: null
 
@@ -13,11 +13,19 @@ const notesURL= "http://localhost:3000/notes"
 
 
 class App extends React.Component {
+
+handleOnLogIn = () => {
+  console.log("ello mate")
+}
+
   render() {
   return (
     <div>
       <HomepageLayout />
-    </div>
+    </div>,
+    <>
+    <ResponsiveContainer handleOnLogIn={this.handleOnLogIn} /> 
+    </>
   );
 }
 }
