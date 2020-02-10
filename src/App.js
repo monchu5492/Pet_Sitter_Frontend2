@@ -4,9 +4,8 @@ import './App.css';
 // import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
-//import LoginForm from './LoginForm'
-import MyProfile from './MyProfile'
-import LoginSignupContainer from './LoginSignupContainer'
+import SignupForm from './SignupForm'
+import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import { getQueriesForElement } from '@testing-library/react';
 import PetCard from './PetCard'
@@ -35,6 +34,21 @@ const notesURL= "http://localhost:3000/notes"
 
 class App extends React.Component {
 
+
+  state={
+    owners:[],
+    loggedIn: false
+  }
+
+  adduser=owner=>{
+     this.setState(prevState=>{
+      return { owners: [...prevState.owners, owner]
+        }
+          
+        })
+    }
+    
+
 handleOnLogIn = () => {
   console.log("ello mate")
 }
@@ -56,6 +70,11 @@ handleOnLogIn = () => {
           exact
           render={() => 
           <LoginSignupContainer />}
+        />
+        <Route
+        path="/signup"
+        exact
+        render={()=> <SignupForm onAddUser={this.adduser}/>}
         />
 
         <Route
