@@ -4,6 +4,7 @@ import './App.css';
 // import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
+import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 //state: isUserLogedIn: null
@@ -14,6 +15,21 @@ const notesURL= "http://localhost:3000/notes"
 
 
 class App extends React.Component {
+
+
+  state={
+    owners:[],
+    loggedIn: false
+  }
+
+  adduser=owner=>{
+     this.setState(prevState=>{
+      return { owners: [...prevState.owners, owner]
+        }
+          
+        })
+    }
+    
 
 handleOnLogIn = () => {
   console.log("ello mate")
@@ -35,6 +51,11 @@ handleOnLogIn = () => {
           path="/login"
           exact
           render={() => <LoginForm />}
+        />
+        <Route
+        path="/signup"
+        exact
+        render={()=> <SignupForm onAddUser={this.adduser}/>}
         />
 
       </Router>
