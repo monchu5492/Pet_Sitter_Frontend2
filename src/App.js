@@ -7,8 +7,12 @@ import NavBar from './NavBar'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
+
+// import { getQueriesForElement } from '@testing-library/react';
+
 import { getQueriesForElement } from '@testing-library/react';
 import PetCard from './PetCard'
+
 //state: isUserLogedIn: null
 
 const ownersURL= "http://localhost:3000/owners"
@@ -17,9 +21,7 @@ const notesURL= "http://localhost:3000/notes"
 
 
 
-//State: 
-// isLoggedIn: false
-// User: {}
+
 
 //Fetch in here
 
@@ -33,6 +35,25 @@ const notesURL= "http://localhost:3000/notes"
 
 
 class App extends React.Component {
+  State = { 
+  isLoggedIn: false,
+  User: {}
+  }
+  
+  renderOwnersProfile = (firstName) => {
+    console.log(firstName)
+    fetch(ownersURL)
+    .then(res => res.json())
+    .then(owners => console.log(owners))
+  }
+  onLogInUser = (state) => {
+    this.setState({...this.state, isLoggedIn: true})
+    console.log(state.name)
+    this.renderOwnersProfile(state.name)
+    // this.setState(prevState => {
+    //   return { o}
+    // })
+  }
 
 
   state={
@@ -69,7 +90,7 @@ handleOnLogIn = () => {
           path="/login"
           exact
           render={() => 
-          <LoginSignupContainer />}
+          <LoginSignupContainer onLogInUser={this.onLogInUser}/>}
         />
         <Route
         path="/signup"

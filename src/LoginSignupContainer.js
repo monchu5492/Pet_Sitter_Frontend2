@@ -15,7 +15,7 @@ class LoginSignupContainer extends React.Component{
     render() {
       return(
         <>
-        <LoginForm />
+        <LoginForm onLogInUser={this.props.onLogInUser}/>
        
         </>
       )
