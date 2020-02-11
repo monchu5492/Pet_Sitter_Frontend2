@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
-import LoginSignupContainer from  './LoginSignUpContainer'
+import LoginSignupContainer from  './LoginSignupContainer'
 import MyProfile from './MyProfile'
 import SignupForm from './SignupForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
