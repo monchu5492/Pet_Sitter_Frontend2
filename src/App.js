@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
-import LoginSignupContainer from  './LoginSignupContainer'
+import LoginSignupContainer from  './LoginSignUpContainer'
 import MyProfile from './MyProfile'
 import SignupForm from './SignupForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
@@ -61,7 +61,7 @@ class App extends React.Component {
 
 
 
-  adduser = owner => {
+  addUser = owner => {
     this.setState(prevState => {
       return {
         owners: [...prevState.owners, owner]
@@ -112,7 +112,7 @@ class App extends React.Component {
         <Route
         path="/signup"
         exact
-        render={()=> <SignupForm onAddUser={this.adduser}/>}
+        render={()=> <SignupForm onAddUser={this.addUser}/>}
         />}
         
             {

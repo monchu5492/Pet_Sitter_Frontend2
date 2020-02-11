@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
     e.preventDefault()
     this.props.onLogInUser(this.state.name)
     this.setState(INITIAL_STATE)
+    
   }
 
   render() {
