@@ -35,15 +35,11 @@ const notesURL = "http://localhost:3000/notes"
 
 ////function logOutUser()
 
-state = {
-  owners: [],
-  loggedIn: false
-}
 
 class App extends React.Component {
   State = { 
-  isLoggedIn: false,
-  User: {}
+    isLoggedIn: false,
+    User: {}
   }
   
   renderOwnersProfile = (firstName) => {
@@ -52,7 +48,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(owners => console.log(owners))
   }
-
+  
   onLogInUser = (state) => {
     this.setState({...this.state, isLoggedIn: true})
     console.log(state.name)
@@ -63,9 +59,6 @@ class App extends React.Component {
   }
 
 
-
-
-
   adduser = owner => {
     this.setState(prevState => {
       return {
@@ -73,19 +66,18 @@ class App extends React.Component {
       }
     }, () => this.postOwner(owner))
   }
-
-  postOwner = (owner) => {
-    fetch(ownersURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(owner)
-    }).then(res => res.json())
-      .then(data => console.log(data))
-      //send to owner profile 
-  }
+postOwner = (owner) => {
+  fetch(ownersURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(owner)
+  }).then(res => res.json())
+    .then(data => console.log(data))
+    //send to owner profile 
+}
 
 
   handleOnLogIn = () => {
@@ -117,16 +109,7 @@ class App extends React.Component {
         exact
         render={()=> <SignupForm onAddUser={this.adduser}/>}
         />}
-        
-            {
-        <Route
-          path="/signup"
-          exact
-          render={() => 
-          <LoginSignupContainer />}
-          />}
-        
-
+  
           {
         <Route
         path="/profile"
@@ -135,7 +118,6 @@ class App extends React.Component {
         />
           }
       
-
         </Router>
       </div>
     );
