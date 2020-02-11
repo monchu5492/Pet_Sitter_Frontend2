@@ -17,7 +17,7 @@ const ProfilePicture = () => (
       className='header'
       horizontal
       style={{ margin: '3em 0em', textTransform: 'uppercase' }}>
-      <h4>My Pets</h4>
+      <p>My Pets</p>
     </Divider>
 
     <PetsContainer />
