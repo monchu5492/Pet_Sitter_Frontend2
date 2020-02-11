@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from './LoginForm'
-//import SignupForm from './SignupForm'
+import SignupForm from './SignupForm'
 
 
 //Callbacks:
