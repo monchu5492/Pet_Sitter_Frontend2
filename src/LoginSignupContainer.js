@@ -1,4 +1,5 @@
 import React from 'react';
+
 import LoginForm from './LoginForm'
 import SignupForm from './SignupForm'
 
@@ -20,6 +21,18 @@ class LoginSignupContainer extends React.Component{
         </>
       )
     }
-  }
 
-  export default LoginSignupContainer
+// import { Button, Form } from 'semantic-ui-react'
+const itinitial_state = {
+  user_name: ""
+}
+class LoginSignUpContainer extends React.Component {
+  state = itinitial_state
+  render() {
+    return(
+      
+    )
+  }
+}
+
+export default LoginSignUpContainer
