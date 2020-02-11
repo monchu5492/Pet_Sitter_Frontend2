@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
   state = INITIAL_STATE
 
   handleOnChange = e => {
-    this.setState({ ...this.state, name: e.target.value})
+    this.setState({...this.state, name: e.target.value})
   }
 
   handleOnSubmit = (e) => {

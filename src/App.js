@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 import LoginSignupContainer from  './LoginSignupContainer'
 import MyProfile from './MyProfile'
 import SignupForm from './SignupForm'
-import LoginForm from './LoginForm'
+// import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
 
 // import { getQueriesForElement } from '@testing-library/react';
@@ -35,6 +35,10 @@ const notesURL = "http://localhost:3000/notes"
 
 ////function logOutUser()
 
+state = {
+  owners: [],
+  loggedIn: false
+}
 
 class App extends React.Component {
   State = { 
@@ -48,6 +52,7 @@ class App extends React.Component {
     .then(res => res.json())
     .then(owners => console.log(owners))
   }
+
   onLogInUser = (state) => {
     this.setState({...this.state, isLoggedIn: true})
     console.log(state.name)
@@ -58,11 +63,8 @@ class App extends React.Component {
   }
 
 
-  state = {
-    owners: [],
-    loggedIn: false
 
-  }
+
 
   adduser = owner => {
     this.setState(prevState => {
