@@ -1,21 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-// import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
 import LoginSignupContainer from  './LoginSignupContainer'
 import MyProfile from './MyProfile'
 import SignupForm from './SignupForm'
-// import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
-
-// import { getQueriesForElement } from '@testing-library/react';
-
-import { getQueriesForElement } from '@testing-library/react';
-import PetCard from './PetCard'
-
-//state: isUserLogedIn: null
 
 const ownersURL = "http://localhost:3000/owners"
 const petsURL = "http://localhost:3000/pets"
@@ -35,34 +25,39 @@ const notesURL = "http://localhost:3000/notes"
 
 ////function logOutUser()
 
-state = {
-  owners: [],
-  loggedIn: false
-}
+
 
 class App extends React.Component {
   State = { 
-  isLoggedIn: false,
-  User: {}
+    owners: [],
+    isLoggedIn: false,
+    user: {}
   }
   
-  renderOwnersProfile = (firstName) => {
-    console.log(firstName)
-    fetch(ownersURL)
-    .then(res => res.json())
-    .then(owners => console.log(owners))
+  componentDidMount() {
+    this.getAllOwners()
   }
 
-  onLogInUser = (state) => {
-    this.setState({...this.state, isLoggedIn: true})
-    console.log(state.name)
-    this.renderOwnersProfile(state.name)
+  getAllOwners = () => {
+    fetch(ownersURL)
+    .then(res => res.json())
+    .then(owner => this.setState({ owners: owner}))
+  }
+
+  
+
+  onLogInUser = (username) => {
+    
+    console.log(username)
+    this.getAllOwners(username)
     // this.setState(prevState => {
     //   return { o}
     // })
+
+    let ownersfiltered = this.state.owners.filter(owner => owner.name == username)
+
+    this.setState({isLoggedIn: true, user: ownersfiltered})
   }
-
-
 
 
 
@@ -86,6 +81,8 @@ class App extends React.Component {
       .then(data => console.log(data))
       //send to owner profile 
   }
+
+
 
 
   handleOnLogIn = () => {
