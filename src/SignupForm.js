@@ -25,6 +25,8 @@ class SignupForm extends React.Component {
 
   render() {
     return(
+      <>
+      <h3 class="form-title">Please sign up to create an account</h3>
       <form class="ui form" onSubmit={this.handleFormSubmit}>
       <div class="field">
         <label>First Name</label>
@@ -32,7 +34,7 @@ class SignupForm extends React.Component {
       </div>
       <div class="field">
         <label>Address</label>
-        <input type="text" name="age" value={this.state.age} onChange={this.handleChange} placeholder="Last Name" />
+        <input type="text" name="address" value={this.state.address} onChange={this.handleChange} placeholder="Last Name" />
       </div>
       <div class="field">
         <label>Image</label>
@@ -43,7 +45,7 @@ class SignupForm extends React.Component {
         <input type="text" name="background_image" value={this.state.background_image} onChange={this.handleChange} placeholder="Background Image" />
       </div>
       <button type="submit" class="ui button">Submit</button>
-    </form>
+    </form></>
     )
   }
 }
