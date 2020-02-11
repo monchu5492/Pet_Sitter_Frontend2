@@ -4,6 +4,8 @@ import './App.css';
 // import FixedMenuLayout from './FixedMenuLayout'
 import HomepageLayout from './HomepageLayout'
 import NavBar from './NavBar'
+import LoginSignupContainer from  './LoginSignupContainer'
+import MyProfile from './MyProfile'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { BrowserRouter as Router, Route } from "react-router-dom"
@@ -15,9 +17,9 @@ import PetCard from './PetCard'
 
 //state: isUserLogedIn: null
 
-const ownersURL= "http://localhost:3000/owners"
-const petsURL= "http://localhost:3000/pets"
-const notesURL= "http://localhost:3000/notes"
+const ownersURL = "http://localhost:3000/owners"
+const petsURL = "http://localhost:3000/pets"
+const notesURL = "http://localhost:3000/notes"
 
 
 
@@ -56,68 +58,86 @@ class App extends React.Component {
   }
 
 
-  state={
-    owners:[],
+  state = {
+    owners: [],
     loggedIn: false
+
   }
 
-  adduser=owner=>{
-     this.setState(prevState=>{
-      return { owners: [...prevState.owners, owner]
-        }
-          
-        })
-    }
-    
+  adduser = owner => {
+    this.setState(prevState => {
+      return {
+        owners: [...prevState.owners, owner]
+      }
+    }, () => this.postOwner(owner))
+  }
 
-handleOnLogIn = () => {
-  console.log("ello mate")
-}
+  postOwner = (owner) => {
+    fetch(ownersURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(owner)
+    }).then(res => res.json())
+      .then(data => console.log(data))
+      //send to owner profile 
+  }
+
+
+  handleOnLogIn = () => {
+    console.log("ello mate")
+  }
 
   render() {
-  return (
-    <div>
-      <Router>
-        <NavBar />
+    return (
+      <div>
+        <Router>
+          <NavBar />{
 
-        <Route
-        path="/"
-        exact
-        render={() => <HomepageLayout />}
-        />
-
-        <Route
+          <Route
+            path="/"
+            exact
+            render={() => <HomepageLayout />}
+          />}
+                {
+           <Route
           path="/login"
           exact
           render={() => 
           <LoginSignupContainer onLogInUser={this.onLogInUser}/>}
-        />
+          />}
+        
+            {
         <Route
         path="/signup"
         exact
         render={()=> <SignupForm onAddUser={this.adduser}/>}
-        />
-
+        />}
+        
+            {
         <Route
           path="/signup"
           exact
           render={() => 
           <LoginSignupContainer />}
-        />
+          />}
         
 
+          {
         <Route
         path="/profile"
         exact
         render={() => <MyProfile />}
         />
-        
-        {/* <PetCard/> */}
+          }
+      
 
-      </Router>
-    </div>
-  );
-}
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
